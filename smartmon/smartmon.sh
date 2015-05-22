@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=0.36
+version=0.37
 
 while getopts ":Dd:v:t" optname
 do
@@ -47,9 +47,8 @@ do
     ;;
     "d")
         # Which device and type are we working with when called
-	RAIDDEV=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $1;}')
-	DeviceType=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $2;}')
-	Device=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $3;}')
+	DeviceType=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $1;}')
+	Device=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $2;}')
     ;;
     "v")
         # Which value to get for the device
