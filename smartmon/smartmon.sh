@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=0.34
+version=0.36
 
 while getopts ":Dd:v:t" optname
 do
@@ -12,18 +12,19 @@ do
         echo "\"data\":["
 	# RAID devices
 	#
-	# Manually add hardware RAID or other devices here NOTE: make sure the short name matches it's /dev/... part!
+	# Manually add hardware RAID or other devices here 
+	# The RAIDDEV is a special name (see section "a" below. If the device is part of software RAID put its mdX number as the short name
 	# The DISKTYPE portion is what smartctl uses. In the first example it is a highpoint card (hpt), fourth device/disk (1/4) and on the first array
 	#Example: echo "    {\"{#RAIDDEV}\":\"3WARE\",\"{#DISKNAME}\":\"/dev/twa0\",\"{#DISKTYPE}\":\"3ware,0\",\"{#SHORTDISKNAME}\":\"twa0\"},"
 	# Below is an example of a four disk HighPoint RAID array that is accessible via /dev/sdb
-	echo "    {\"{#DISKNAME}\":\"/dev/sdb\",\"{#DISKTYPE}\":\"hpt,1/1/1\",\"{#SHORTDISKNAME}\":\"sdbone\"},"
-	echo "    {\"{#DISKNAME}\":\"/dev/sdb\",\"{#DISKTYPE}\":\"hpt,1/2/1\",\"{#SHORTDISKNAME}\":\"sdbtwo\"},"
-	echo "    {\"{#DISKNAME}\":\"/dev/sdb\",\"{#DISKTYPE}\":\"hpt,1/3/1\",\"{#SHORTDISKNAME}\":\"sdbthree\"},"
-	echo "    {\"{#DISKNAME}\":\"/dev/sdb\",\"{#DISKTYPE}\":\"hpt,1/4/1\",\"{#SHORTDISKNAME}\":\"sdbfour\"},"
+	#echo "    {\"{#DISKNAME}\":\"/dev/sdb\",\"{#DISKTYPE}\":\"hpt,1/1/1\",\"{#SHORTDISKNAME}\":\"sdbone\"},"
+	#echo "    {\"{#DISKNAME}\":\"/dev/sdb\",\"{#DISKTYPE}\":\"hpt,1/2/1\",\"{#SHORTDISKNAME}\":\"sdbtwo\"},"
+	#echo "    {\"{#DISKNAME}\":\"/dev/sdb\",\"{#DISKTYPE}\":\"hpt,1/3/1\",\"{#SHORTDISKNAME}\":\"sdbthree\"},"
+	#echo "    {\"{#DISKNAME}\":\"/dev/sdb\",\"{#DISKTYPE}\":\"hpt,1/4/1\",\"{#SHORTDISKNAME}\":\"sdbfour\"},"
 	#
 	# TODO: add any drives listed above in this list to keep it from being rediscovered below in the form of: "sda|sdb|sdc"
 	#
-	IgnoreDisks="sdb"
+	IgnoreDisks="sdz"
 	#
 	# Autodiscovery of standard /dev/sdX drives
 	#
@@ -46,8 +47,9 @@ do
     ;;
     "d")
         # Which device and type are we working with when called
-	DeviceType=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $1;}')
-	Device=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $2;}')
+	RAIDDEV=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $1;}')
+	DeviceType=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $2;}')
+	Device=$(/bin/echo $OPTARG | /usr/bin/awk -F "." '{print $3;}')
     ;;
     "v")
         # Which value to get for the device
