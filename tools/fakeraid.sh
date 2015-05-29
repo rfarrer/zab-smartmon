@@ -147,6 +147,125 @@ ID      Capacity    MaxFree     Flag    Statue    ModelNumber
 1/4     750.08      250.05      NORMAL  RAID      Hitachi HTS547575A9E384
 -------------------------------------------------------------------------------"
 
+elif [ $RT -eq 12 ];
+then
+echo "                                     
+
+Adapter 0 -- Virtual Drive Information:
+Virtual Drive: 0 (Target Id: 0)
+Name                :
+RAID Level          : Primary-1, Secondary-0, RAID Level Qualifier-0
+Size                : 543.890 GB
+Sector Size         : 512
+Mirror Data         : 543.890 GB
+State               : Optimal
+Strip Size          : 64 KB
+Number Of Drives per span:2
+Span Depth          : 4
+Default Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BB
+U
+Current Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BB
+U
+Default Access Policy: Read/Write
+Current Access Policy: Read/Write
+Disk Cache Policy   : Disk's Default
+Encryption Type     : None
+Is VD Cached: Yes
+Cache Cade Type : Read Only
+
+
+
+Exit Code: 0x00"
+
+elif [ $RT -eq 13 ];
+then
+echo "                                     
+
+Adapter 0 -- Virtual Drive Information:
+Virtual Drive: 0 (Target Id: 0)
+Name                :
+RAID Level          : Primary-1, Secondary-0, RAID Level Qualifier-0
+Size                : 543.890 GB
+Sector Size         : 512
+Mirror Data         : 543.890 GB
+State               : Degraded
+Strip Size          : 64 KB
+Number Of Drives per span:2
+Span Depth          : 4
+Default Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BB
+U
+Current Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BB
+U
+Default Access Policy: Read/Write
+Current Access Policy: Read/Write
+Disk Cache Policy   : Disk's Default
+Encryption Type     : None
+Is VD Cached: Yes
+Cache Cade Type : Read Only
+
+
+
+Exit Code: 0x00"
+
+elif [ $RT -eq 14 ];
+then
+echo "                                     
+
+Adapter 0 -- Virtual Drive Information:
+Virtual Drive: 0 (Target Id: 0)
+Name                :
+RAID Level          : Primary-1, Secondary-0, RAID Level Qualifier-0
+Size                : 543.890 GB
+Sector Size         : 512
+Mirror Data         : 543.890 GB
+State               : Partially Degraded
+Strip Size          : 64 KB
+Number Of Drives per span:2
+Span Depth          : 4
+Default Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BB
+U
+Current Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BB
+U
+Default Access Policy: Read/Write
+Current Access Policy: Read/Write
+Disk Cache Policy   : Disk's Default
+Encryption Type     : None
+Is VD Cached: Yes
+Cache Cade Type : Read Only
+
+
+
+Exit Code: 0x00"
+
+elif [ $RT -eq 15 ];
+then
+echo "                                     
+
+Adapter 0 -- Virtual Drive Information:
+Virtual Drive: 0 (Target Id: 0)
+Name                :
+RAID Level          : Primary-1, Secondary-0, RAID Level Qualifier-0
+Size                : 543.890 GB
+Sector Size         : 512
+Mirror Data         : 543.890 GB
+State               : Offline
+Strip Size          : 64 KB
+Number Of Drives per span:2
+Span Depth          : 4
+Default Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BB
+U
+Current Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BB
+U
+Default Access Policy: Read/Write
+Current Access Policy: Read/Write
+Disk Cache Policy   : Disk's Default
+Encryption Type     : None
+Is VD Cached: Yes
+Cache Cade Type : Read Only
+
+
+
+Exit Code: 0x00"
 
 
 fi
