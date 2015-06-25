@@ -76,9 +76,9 @@ do
 		then
 			# LSI chipset RAID with MegaCLI tool
 			# XXX: FOR TESTING:
-			RAIDcmd="../tools/fakeraid.sh 12" 
+			#RAIDcmd="../tools/fakeraid.sh 12" 
 			# TODO: this might not work if there are multiple controllers or possibly even multiple arrays as we are getting "all"
-			#RAIDcmd="/usr/local/sbin/megacli64 -LDInfo -Lall -Aall" 
+			RAIDcmd="/usr/local/sbin/megacli64 -LDInfo -Lall -Aall" 
 			RAIDstat=$(exec $RAIDcmd | grep State | sed 's/.*: //')
 			if [[ $RAIDstat == Optimal ]];
 			then

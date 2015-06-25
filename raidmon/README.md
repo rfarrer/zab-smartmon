@@ -22,6 +22,6 @@ probably have an extra comma in your list line of disk discovery in
 raidmon.sh. The last line cannot have a comma.
 
 If you get alerts that zabbix cannot sudo, you need to give zabbix the ability
-to sudo on the monitored machine. A simple 'echo "zabbix ALL=(ALL) 
-NOPASSWD:ALL" > /etc/sudoers.d/zabbix' should do the trick.
+to sudo on the monitored machine and without a password. For example add "zabbix 
+ALL=(ALL) NOPASSWD:ALL" to your sudoers configuration.
 

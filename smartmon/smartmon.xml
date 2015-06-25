@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- smartmon.xml Version 0.16 -->
+<!-- smartmon.xml Version 0.17 -->
 <zabbix_export>
     <version>2.0</version>
     <date>2015-05-14:31T07:15:44Z</date>
@@ -395,7 +395,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>smartmon.value[{#DISKTYPE},{#DISKNAME},Temperature_Cel]</key>
+                            <key>smartmon.value[{#DISKTYPE},{#DISKNAME},Temperature]</key>
                             <delay>10800</delay>
                             <history>10</history>
                             <trends>30</trends>
@@ -434,7 +434,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template SMARTMON:smartmon.value[{#DISKTYPE},{#DISKNAME},Temperature_Cel].last()}&gt;50</expression>
+                            <expression>{Template SMARTMON:smartmon.value[{#DISKTYPE},{#DISKNAME},Temperature].last()}&gt;50</expression>
                             <name>SMART : HDD overheat {#SHORTDISKNAME}</name>
                             <url/>
                             <status>0</status>

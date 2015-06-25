@@ -27,8 +27,8 @@ If all of the SMART values show as "not supported" you most likely need to
 install smartctl on the monitored machine.
 
 If you get alerts that zabbix cannot sudo, you need to give zabbix the ability
-to sudo on the monitored machine. A simple 'echo "zabbix ALL=(ALL) 
-NOPASSWD:ALL" > /etc/sudoers.d/zabbix' should do the trick.
+to sudo on the monitored machine and without a password. For example add "zabbix 
+ALL=(ALL) NOPASSWD:ALL" to your sudoers configuration.
 
 If a drive is missing from the listing, make sure it is not being removed by
 grep in the discovery section of smartmon.sh or if it is RAID make sure it is

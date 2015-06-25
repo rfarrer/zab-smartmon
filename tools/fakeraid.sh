@@ -135,7 +135,7 @@ ID      Capacity    MaxFree     Flag    Statue    ModelNumber
 elif [ $RT -eq 11 ];
 then
 echo "ID:             1                   Name:           RAID_5_0
-Type:           RAID5               Status:         BUGGERED
+Type:           RAID5               Status:         OFFLINE
 Capacity(GB):   1500.08             BlockSize:      64k
 SectorSize:     512B                CachePolicy:    WB
 Progress:       --
@@ -267,6 +267,24 @@ Cache Cade Type : Read Only
 
 Exit Code: 0x00"
 
+elif [ $RT -eq 16 ];
+then
+echo "smartctl 5.41 2011-06-09 r3365 [x86_64-linux-3.11.0-24-generic] (local build)
+Copyright (C) 2002-11 by Bruce Allen, http://smartmontools.sourceforge.net
+
+Current Drive Temperature:     33 C
+Drive Trip Temperature:        68 C
+Elements in grown defect list: 0
+Vendor (Seagate) cache information
+  Blocks sent to initiator = 1711141682
+  Blocks received from initiator = 1348548402
+  Blocks read from cache and sent to initiator = 136798746
+  Number of read and write commands whose size <= segment size = 1104707787
+  Number of read and write commands whose size > segment size = 3571869
+Vendor (Seagate/Hitachi) factory information
+  number of hours powered up = 30789.32
+  number of minutes until next internal SMART test = 19
+"
 
 fi
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=0.37
+version=0.39
 
 while getopts ":Dd:v:t" optname
 do
@@ -52,13 +52,20 @@ do
     ;;
     "v")
         # Which value to get for the device
-        /usr/sbin/smartctl -d $DeviceType -A $Device | grep $OPTARG | awk '{print $10}' | head -1
+        /usr/sbin/smartctl -d $DeviceType -A $Device | grep $OPTARG | head -1 | awk 'NF>1{print $(NF-1), $NF}' | grep -oE '([0-9][0-9])'
         exit 0
     ;;
     "t") 
     	# Get overall SMART health information: usually "PASSED" if all is well
-       	/usr/sbin/smartctl -d $DeviceType -a $Device | grep "SMART overall-health" | cut -d " " -f 6
-        exit 0
+       	health=$(/usr/sbin/smartctl -d $DeviceType -a $Device | grep -i health | awk 'NF>1{print $NF}')
+	if [[ $health == "PASSED" || $health == "OK" ]];
+	then
+		echo 'PASSED'
+		exit 0
+	else
+		echo 'FAILED!'
+		exit 2
+	fi
     ;;
     "?")
         echo "Unknown option $OPTARG"
