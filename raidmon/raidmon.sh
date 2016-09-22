@@ -89,6 +89,25 @@ do
 			else
 				ArrayStatus=OFFLINE
 			fi
+
+		elif [[ $VENDOR == zfs ]];
+		then
+			# ZFS raidz
+			# XXX: FOR TESTING:
+			#RAIDcmd="../tools/fakeraid.sh 17" 
+			# TODO: FIXME
+			RAIDcmd="zpool status" # FIXME 
+			RAIDstat=$(exec $RAIDcmd | grep State | sed 's/.*: //') # FIXME
+			if [[ $RAIDstat == Optimal ]]; # FIXME
+			then
+				ArrayStatus=ONLINE.NORMAL
+			elif [[ $RAIDstat == Degraded || $RAIDstat == "Partially Degraded" ]]; #FIXME
+			then
+				ArrayStatus=ONLINE.DEGRADED
+			else
+				ArrayStatus=OFFLINE
+			fi
+
 		else
 			echo "unknown RAID device. Please add it to `hostname` $0"
 		fi
