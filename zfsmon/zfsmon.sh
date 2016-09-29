@@ -1,7 +1,7 @@
 #!/bin/bash
-version=0.15
+version=0.16
 
-while getopts ":Ddf:h:i:" optname
+while getopts ":Ddf:h:i:p:u:" optname
 do
     case "$optname" in
         "D")
@@ -26,6 +26,18 @@ do
 	# Get the filesystem informaton about the given pool name
 	# For UserParameter=zfs.get.fsinfo[*]
 	/sbin/zfs get -o value -Hp $3 $2
+	exit 0
+	;;
+	"p")
+	# Get how much of the given pool is used
+	# For UserParameter=zfs.zpool.perused[*]
+	/sbin/zpool list -H -o capacity $2
+	exit 0
+	;;
+	"u")
+	# Get how much of the given pool is used
+	# For UserParameter=zfs.zpool.pused[*]
+	/sbin/zpool list -H -o capacity $2 | /bin/sed 's/%$//'
 	exit 0
 	;;
 	*)
